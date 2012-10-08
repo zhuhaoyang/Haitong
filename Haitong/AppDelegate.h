@@ -8,7 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate>{
+    NSTimer *timer;
+    UIImageView *startLoge;
+    UIView *m_view;
+    UINavigationController *nav;
+    UIViewController *viewController2;
+    UIViewController *viewController3;
+    UIImageView *triangle;
+}
+- (void)fadeScreen;
+- (void)finishedFading;
+- (void)showMain;
 
 @property (strong, nonatomic) UIWindow *window;
 
