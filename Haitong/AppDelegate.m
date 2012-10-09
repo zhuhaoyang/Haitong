@@ -36,16 +36,19 @@
 //    m_view.backgroundColor = [UIColor redColor];
 //    [self.window addSubview:m_view];
 //    [m_view bringSubviewToFront:self.window];
+    m_WeiboViewController = [[WeiboViewController alloc]initWithNibName:@"WeiboViewController" bundle:[NSBundle mainBundle] delegate:self];
+    m_WeiboViewController.view.frame = CGRectMake(624/2, 100,400,250);
+
     [self.window makeKeyAndVisible];
 
-    
-    if (0) {
+    n = 1;
+    if (1) {
         startLoge = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"loading"]];
         startLoge.frame = CGRectMake(0, 0, 768, 1024);
         
         [self.window addSubview:startLoge];
         
-        timer = [NSTimer scheduledTimerWithTimeInterval: 1.0
+        timer = [NSTimer scheduledTimerWithTimeInterval: 3.0
                                                  target: self
                                                selector: @selector(fadeScreen)
                                                userInfo: nil repeats: NO];
@@ -80,7 +83,7 @@
 
 - (void)showMain
 {
-    UIViewController *viewController1 = [[FirstViewController alloc] initWithNibName:@"FirstViewController1" bundle:nil];
+    viewController1 = [[FirstViewController alloc] initWithNibName:@"FirstViewController1" bundle:nil];
     nav = [[UINavigationController alloc]initWithRootViewController:viewController1];
     viewController2 = [[SecondViewController alloc] initWithNibName:@"SecondViewController2" bundle:nil];
     viewController3 = [[ThirdViewController alloc] initWithNibName:@"ThirdViewController" bundle:nil];
@@ -97,22 +100,52 @@
     
     UIButton *btHeart = [UIButton buttonWithType:UIButtonTypeCustom];
     [btHeart setBackgroundImage:[UIImage imageNamed:@"heart"] forState:UIControlStateNormal];
-    btHeart.frame = CGRectMake(900, 12, 24, 22);
+    btHeart.frame = CGRectMake(950, 12, 24, 22);
     [self.tabBarController.tabBar addSubview:btHeart];
     
     UIButton *btWeibo = [UIButton buttonWithType:UIButtonTypeCustom];
     [btWeibo setBackgroundImage:[UIImage imageNamed:@"weibo"] forState:UIControlStateNormal];
-    btWeibo.frame = CGRectMake(950, 12, 32, 26);
+    btWeibo.frame = CGRectMake(900, 12, 32, 26);
+    [btWeibo addTarget:self action:@selector(weibo) forControlEvents:UIControlEventTouchUpInside];
     [self.tabBarController.tabBar addSubview:btWeibo];
     
     triangle = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"3j"]];
 //    triangle.frame = CGRectMake(49-10, 330 + 60, 10, 19);
-    triangle.frame = CGRectMake(310+60, 0, 10, 19);
+    triangle.frame = CGRectMake(310+60, 0, 19, 10);
     [self.tabBarController.tabBar addSubview:triangle];
 //    UIView *m_View = [[UIView alloc]initWithFrame:CGRectMake(49, 0, 1, 1024)];
 //    m_View.backgroundColor = [UIColor grayColor];
 //    [self.window addSubview:m_View];
+    
 
+
+}
+
+- (void)removeWeibo
+{
+    [m_WeiboViewController.view removeFromSuperview];
+}
+
+- (void)weibo
+{
+//    if (m_WeiboViewController == nil) {
+//        m_WeiboViewController = [[WeiboViewController alloc]initWithNibName:@"WeiboViewController" bundle:[NSBundle mainBundle] delegate:self];
+//        m_WeiboViewController.view.frame = CGRectMake(624/2, -700,400,300);
+//    }
+    switch (n) {
+        case 1:
+            [viewController1.view addSubview:m_WeiboViewController.view];
+            break;
+        case 2:
+            [viewController2.view addSubview:m_WeiboViewController.view];
+            break;
+        case 3:
+            [viewController3.view addSubview:m_WeiboViewController.view];
+            break;
+        default:
+            break;
+    }
+//    [self.tabBarController.tabBar addSubview:m_WeiboViewController.view];
 }
 
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
@@ -122,11 +155,14 @@
     [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
     [UIView setAnimationDuration:0.3];
     if ([viewController isEqual:nav]) {
-        triangle.frame = CGRectMake(310+60, 0, 10, 19);
+        triangle.frame = CGRectMake(310+60, 0, 19, 10);
+        n = 1;
     }else if([viewController isEqual:viewController2]){
-        triangle.frame = CGRectMake(310+170, 0, 10, 19);
+        triangle.frame = CGRectMake(310+170, 0, 19, 10);
+        n = 2;
     }else if([viewController isEqual:viewController3]){
-        triangle.frame = CGRectMake(310+280, 0, 10, 19);
+        triangle.frame = CGRectMake(310+280, 0, 19, 10);
+        n = 3;
     }
     [UIView setAnimationDelegate:self];
     [UIView commitAnimations];

@@ -20,7 +20,7 @@
     if (self) {
         // Custom initialization
         
-        [self.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"life000_07.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"life000_07.png"]];
+        [self.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"tab3"] withFinishedUnselectedImage:[UIImage imageNamed:@"tab3"]];
 
         UIScrollView *m_scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, 1024, 768-20-49)];
         m_scrollView.pagingEnabled = YES;
@@ -32,7 +32,7 @@
         [self.view addSubview:m_scrollView];
         
         NSArray *array =[[NSArray alloc]init];
-        array = @[@[@"delicious_02",@"delicious_04",@"delicious_05"],@[@"delicious1_02",@"delicious1_04",@"delicious1_05"],@[@"delicious13_02",@"delicious13_04",@"delicious13_05"]];
+        array = @[@[@"delicious_02",@"delicious_04",@"delicious_05"],@[@"delicious1_02",@"delicious1_04",@"delicious1_05"],@[@"delicious32_02",@"delicious32_04",@"delicious32_05"]];
 //        array = @[@"delicious_02",@"delicious_04",@"delicious_05"];
         
         

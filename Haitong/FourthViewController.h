@@ -20,6 +20,7 @@
     UIView *shareView;
     UIView *bottomView;
     UIImageView *triangle;
+    UIImageView *imgBg;
 //    UIImageView *img;
 }
 @end

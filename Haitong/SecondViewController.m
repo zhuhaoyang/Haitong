@@ -18,7 +18,7 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        [self.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"life000_05.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"life000_05.png"]];
+        [self.tabBarItem setFinishedSelectedImage:[UIImage imageNamed:@"tab2"] withFinishedUnselectedImage:[UIImage imageNamed:@"tab2"]];
 
         UIScrollView *m_scrollView = [[UIScrollView alloc]initWithFrame:CGRectMake(0, 0, 1024, 768-20-49)];
         m_scrollView.pagingEnabled = YES;

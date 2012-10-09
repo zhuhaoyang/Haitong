@@ -7,15 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WeiboViewController.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate>{
+@interface AppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate,WeiboDelegate>{
     NSTimer *timer;
     UIImageView *startLoge;
     UIView *m_view;
     UINavigationController *nav;
+    UIViewController *viewController1;
     UIViewController *viewController2;
     UIViewController *viewController3;
     UIImageView *triangle;
+    WeiboViewController *m_WeiboViewController;
+    NSInteger n;
 }
 - (void)fadeScreen;
 - (void)finishedFading;
